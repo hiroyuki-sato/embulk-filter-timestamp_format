@@ -7,8 +7,8 @@ import org.embulk.config.ConfigDefault;
 
 import org.embulk.filter.timestamp_format.TimestampFormatFilterPlugin.PluginTask;
 
-import org.embulk.spi.time.JRubyTimeParserHelper;
-import org.embulk.spi.time.JRubyTimeParserHelperFactory;
+// import org.embulk.spi.time.JRubyTimeParserHelper;
+// import org.embulk.spi.time.JRubyTimeParserHelperFactory;
 import org.embulk.spi.time.Timestamp;
 
 import static org.embulk.spi.time.TimestampFormat.parseDateTimeZone;
@@ -184,11 +184,13 @@ public class TimestampParser {
             this.defaultTimestampFormat = defaultTimestampFormat;
             this.defaultDate = defaultDate;
         }
+//        @Override
+//        public DateTimeZone getDefaultTimeZone()
+//        {
+//            return this.defaultTimeZone;
+//        }
         @Override
-        public DateTimeZone getDefaultTimeZone()
-        {
-            return this.defaultTimeZone;
-        }
+        public String getDefaultTimeZoneId(){ return getDefaultTimeZoneId(); }
         @Override
         public String getDefaultTimestampFormat()
         {
@@ -199,11 +201,11 @@ public class TimestampParser {
         {
             return this.defaultDate;
         }
-        @Override
-        public ScriptingContainer getJRuby()
-        {
-            return null;
-        }
+//        @Override
+//        public ScriptingContainer getJRuby()
+//        {
+//            return null;
+//        }
     }
 
     private class TimestampParserColumnOptionImpl implements org.embulk.spi.time.TimestampParser.TimestampColumnOption
@@ -220,11 +222,13 @@ public class TimestampParser {
             this.format = format;
             this.date = date;
         }
+//        @Override
+//        public Optional<DateTimeZone> getTimeZone()
+//        {
+//            return this.timeZone;
+//        }
         @Override
-        public Optional<DateTimeZone> getTimeZone()
-        {
-            return this.timeZone;
-        }
+        public Optional<String> getTimeZoneId(){ return getTimeZoneId(); }
         @Override
         public Optional<String> getFormat()
         {
